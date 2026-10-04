@@ -1,0 +1,22 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+
+<section class="page shell narrow">
+  <p class="eyebrow">The journal</p>
+  <h1>Archive</h1>
+  <div class="archive-list">
+    {% for post in site.posts %}
+      <article class="archive-item">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%B %-d, %Y' }}</time>
+        <div>
+          <p class="eyebrow">{{ post.categories | first | default: 'Journal' }}</p>
+          <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+          <p>{{ post.excerpt | strip_html | normalize_whitespace }}</p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>

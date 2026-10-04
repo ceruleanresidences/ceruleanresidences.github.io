@@ -1,0 +1,23 @@
+title: Cerulean Residences
+description: Thoughtful notes on home, place, and everyday living.
+url: "https://ceruleanresidences.github.io"
+baseurl: ""
+lang: en-US
+timezone: America/Chicago
+permalink: /journal/:year/:month/:day/:title/
+future: true
+
+markdown: kramdown
+excerpt_separator: "<!--more-->"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

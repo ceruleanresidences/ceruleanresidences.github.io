@@ -1,0 +1,40 @@
+---
+layout: default
+title: Journal
+---
+<section class="hero">
+  <div class="shell hero-content">
+    <p class="eyebrow">Cerulean Residences</p>
+    <h1>A quieter way to live well.</h1>
+    <p class="hero-copy">Notes on homes with soul, the neighborhoods around them, and the small rituals that make a place your own.</p>
+    <a class="button" href="#latest">Read the journal <span aria-hidden="true">↓</span></a>
+  </div>
+</section>
+
+<section id="latest" class="shell journal-section" aria-labelledby="latest-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">From the journal</p>
+      <h2 id="latest-title">Latest stories</h2>
+    </div>
+    <a href="{{ '/archive/' | relative_url }}">View archive <span aria-hidden="true">→</span></a>
+  </div>
+
+  {% if site.posts.size > 0 %}
+    <div class="post-grid">
+      {% for post in site.posts limit: 6 %}
+        <article class="post-card">
+          <p class="eyebrow">{{ post.categories | first | default: 'Journal' }}</p>
+          <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+          <p>{{ post.excerpt | strip_html | normalize_whitespace }}</p>
+          <div class="post-card-footer">
+            <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%b %-d, %Y' }}</time>
+            <a href="{{ post.url | relative_url }}" aria-label="Read {{ post.title | escape }}">Read <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-state">The first entry is on its way. Check back soon.</p>
+  {% endif %}
+</section>
